@@ -107,7 +107,7 @@ const Table = () => {
 						filter={true}
 						type='number'
 						cellRendererFramework={(params) => (
-							<input type='text' placeholder='Name' />
+							<input type='text' value={params.value} placeholder='Name' />
 						)}
 						onCellValueChanged={true}
 						// cellStyle={
@@ -127,7 +127,7 @@ const Table = () => {
 						editable={true}
 						type='email'
 						cellRendererFramework={(params) => (
-							<input type='text' placeholder='Email' />
+							<input type='text' value={params.value} placeholder='Email' />
 						)}
 					></AgGridColumn>
 					<AgGridColumn
@@ -147,9 +147,7 @@ const Table = () => {
 						sortable={true}
 						filter={true}
 						editable={true}
-						cellRendererFramework={(params) => (
-							<input type='date' placeholder={params.value} />
-						)}
+						cellEditor={(params) => <input type='date' placeholder={params.value} />}
 					></AgGridColumn>
 					<AgGridColumn
 						field='Country'
