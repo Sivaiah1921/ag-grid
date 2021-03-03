@@ -105,9 +105,14 @@ const Table = () => {
 						editable={true}
 						onCellDoubleClicked={true}
 						filter={true}
-						type='number'
 						cellRendererFramework={(params) => (
-							<input type='text' value={params.value} placeholder='Name' />
+							<input
+								className='input'
+								type='text'
+								value={params.value}
+								placeholder='Name'
+								defaultValue
+							/>
 						)}
 						onCellValueChanged={true}
 						// cellStyle={
@@ -123,11 +128,16 @@ const Table = () => {
 					<AgGridColumn
 						field='Email'
 						sortable={true}
-						// filter={true}
+						filter={true}
 						editable={true}
-						type='email'
 						cellRendererFramework={(params) => (
-							<input type='text' value={params.value} placeholder='Email' />
+							<input
+								className='input'
+								type='text'
+								value={params.value}
+								placeholder='Email'
+								defaultValue
+							/>
 						)}
 					></AgGridColumn>
 					<AgGridColumn
@@ -136,7 +146,7 @@ const Table = () => {
 						filter={true}
 						editable={true}
 						cellRendererFramework={(params) => (
-							<select id='dropdown' defaultValue={params.value}>
+							<select className='input' id='dropdown' defaultValue={params.value}>
 								<option value={params.value}>Male</option>
 								<option value={params.value}>Female</option>
 							</select>
@@ -147,7 +157,9 @@ const Table = () => {
 						sortable={true}
 						filter={true}
 						editable={true}
-						cellEditor={(params) => <input type='date' placeholder={params.value} />}
+						cellEditor={(params) => (
+							<input className='input' type='date' placeholder={params.value} />
+						)}
 					></AgGridColumn>
 					<AgGridColumn
 						field='Country'
@@ -155,7 +167,7 @@ const Table = () => {
 						filter={true}
 						editable={true}
 						cellRendererFramework={(params) => (
-							<select id='dropdown' defaultValue={params.value}>
+							<select className='input' id='dropdown' defaultValue={params.value}>
 								<option value={params.value}>India</option>
 								<option value={params.value}>Aus</option>
 							</select>
@@ -168,7 +180,7 @@ const Table = () => {
 						editable={true}
 					></AgGridColumn>
 					<AgGridColumn
-						field='City'
+						field=''
 						headerName=''
 						cellRendererFramework={(params) => (
 							<div onClick={() => actionButton(params)}>
