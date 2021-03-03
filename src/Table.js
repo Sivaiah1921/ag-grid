@@ -85,7 +85,8 @@ const Table = () => {
 					rowSelection={"multiple"}
 					onSelectionChanged={onSelectionChanged}
 					rowData={rowData}
-					onCellClicked={true}
+
+					// onCellClicked={true}
 				>
 					<AgGridColumn
 						field='Id'
@@ -105,7 +106,9 @@ const Table = () => {
 						onCellDoubleClicked={true}
 						filter={true}
 						type='number'
-						cellRendererFramework={CustomInput}
+						cellRendererFramework={(params) => (
+							<input type='text' placeholder='Name' />
+						)}
 						onCellValueChanged={true}
 						// cellStyle={
 						// 	(params) => {
@@ -120,42 +123,45 @@ const Table = () => {
 					<AgGridColumn
 						field='Email'
 						sortable={true}
-						filter={true}
+						// filter={true}
 						editable={true}
 						type='email'
-						cellRendererFramework={CustomInput}
+						cellRendererFramework={(params) => (
+							<input type='text' placeholder='Email' />
+						)}
 					></AgGridColumn>
 					<AgGridColumn
 						field='Gender'
 						sortable={true}
 						filter={true}
 						editable={true}
-						cellRendererFramework={CustomDropdown}
+						cellRendererFramework={(params) => (
+							<select id='dropdown' defaultValue={params.value}>
+								<option value={params.value}>Male</option>
+								<option value={params.value}>Female</option>
+							</select>
+						)}
 					></AgGridColumn>
 					<AgGridColumn
 						field='DOB'
 						sortable={true}
 						filter={true}
 						editable={true}
-						cellEditor={(params) => {
-							console.log(params.value, "value");
-							return (
-								<input
-									placeholder='DOB'
-									onChange={(e) => console.log(e, "onChange")}
-									value={params.value}
-									type='date'
-								/>
-							);
-						}}
-						// cellRendererFramework=
+						cellRendererFramework={(params) => (
+							<input type='date' placeholder={params.value} />
+						)}
 					></AgGridColumn>
 					<AgGridColumn
 						field='Country'
 						sortable={true}
 						filter={true}
 						editable={true}
-						cellRendererFramework={CustomDropdown}
+						cellRendererFramework={(params) => (
+							<select id='dropdown' defaultValue={params.value}>
+								<option value={params.value}>India</option>
+								<option value={params.value}>Aus</option>
+							</select>
+						)}
 					></AgGridColumn>
 					<AgGridColumn
 						field='City'

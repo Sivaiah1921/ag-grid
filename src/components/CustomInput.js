@@ -1,25 +1,30 @@
-import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import React, {
+	forwardRef,
+	useImperativeHandle,
+	useRef,
+	useEffect,
+} from "react";
 
 export default forwardRef((props, ref) => {
 	const inputRef = useRef();
 	useImperativeHandle(ref, () => {
 		return {
-			isFilterActive() {
-				return inputRef.current.value !== "";
-			},
-
-			doesFilterPass: (params) => {
-				return params.data.price.toString() === inputRef.current.value;
+			getValue: () => {
+				return inputRef.current.value;
 			},
 		};
 	});
 
+	useEffect(() => {
+		console.log(inputRef.current.value, props, "useeffect");
+	}, []);
+
 	return (
 		<input
 			type='text'
-			value={props.value}
 			ref={inputRef}
-			onChange={(e) => console.log(props, "custom input")}
+			placeholder='text'
+			defaultValue={props.value}
 		/>
 	);
 });
